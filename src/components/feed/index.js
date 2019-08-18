@@ -18,15 +18,14 @@ class Feed extends Component {
             <div className="FeedMain">
                 <section>
                     <article>
-                        { this.props.messages.data.map(docs => (
-                            <ul key={docs.id}>
-                                <span>{docs.message}</span> <br/>
+                        { this.props.messages.data.map(data => (
+                            <ul key={data._id}>
+                                <span>{data.message}</span> <br/>
                                 <span>@23:04</span>
                             </ul>
                         )) }
                     </article>
                 </section>
-                { this.props.messages.loading && <p>Loading...</p> }
             </div>
         )
     }

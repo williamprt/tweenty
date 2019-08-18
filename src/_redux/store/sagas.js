@@ -1,22 +1,11 @@
 import { takeLatest, all, put, call } from 'redux-saga/effects'
-
-function getApi() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(
-                {id: Math.random(), message: 'Hello World'}
-            )
-        }, 2000)
-    });
-};
+import api from '../../services/axios';
 
 function sendApi(message) {
     return new Promise((resolve) => {
-        resolve(
-            {id: Math.random(), message }
-        )
-    });
-};
+        resolve({ id: Math.random(), message })
+    })
+}
 
 function* asyncSendMessage(action) {
     try {
@@ -35,11 +24,14 @@ function* asyncSendMessage(action) {
 
 function* asyncRequestAPI() {
     try {
-        const response = yield call(getApi)
+        const response = yield call(api.get, '/posts?page=1')
+        let { docs, prevPage, nextPage, page } = response.data;
+        console.log(response.data)
         yield put({
             type: 'SUCCESS_API',
             payload: {
-                data: response
+                data: docs,
+                
             }
         })
     } catch (error) {
@@ -53,6 +45,7 @@ export default function* root() {
     yield all([
         takeLatest('ASYNC_SEND_MESSAGE', asyncSendMessage)
     ])
+
     yield all([
         takeLatest('ASYNC_REQUEST_API', asyncRequestAPI)
     ])
