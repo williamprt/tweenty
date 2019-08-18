@@ -9,7 +9,9 @@ function sendApi(message) {
 
 function* asyncSendMessage(action) {
     try {
-        yield call(sendApi, action.payload.message)
+        yield call(api.post, '/posts', {
+            message: action.payload.message
+        })
 
         yield put({
             type: 'SEND_MESSAGE',
@@ -25,8 +27,7 @@ function* asyncSendMessage(action) {
 function* asyncRequestAPI(action) {
     try {
         const response = yield call(api.get, `/posts?page=${action.payload.page}`)
-        let { docs, prevPage, nextPage, totalPages,page } = response.data;
-        console.log(response.data)
+        let { docs, prevPage, nextPage, totalPages, page } = response.data;
         yield put({
             type: 'SUCCESS_API',
             payload: {
