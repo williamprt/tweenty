@@ -1,5 +1,8 @@
-export function anything() {
+export function sendMessage(message) {
     return {
-        type: 'ANY_THING'
+        type: 'SEND_MESSAGE',
+        payload: {
+            message
+        }
     }
 }
