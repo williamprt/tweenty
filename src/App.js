@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 
+import Interface from './components/interface';
+import Feed from './components/feed';
+
 class App extends Component {
   render() {
-    return <h1>Hello World its the first commit</h1>
+    return (
+      <div className="AppMain">
+        <Feed />
+        <Interface />
+      </div>
+    )
   }
 }
 
