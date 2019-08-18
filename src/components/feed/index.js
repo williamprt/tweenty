@@ -22,6 +22,9 @@ class Feed extends Component {
                             <ul key={data._id}>
                                 <span>{data.message}</span> <br/>
                                 <span>@23:04</span>
+                                <button onClick={() => {
+                                    this.props.destroyMessage(data._id);
+                                }}>X</button>
                             </ul>
                         )) }
                     </article>

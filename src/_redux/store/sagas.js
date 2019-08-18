@@ -1,12 +1,6 @@
 import { takeLatest, all, put, call } from 'redux-saga/effects'
 import api from '../../services/axios';
 
-function sendApi(message) {
-    return new Promise((resolve) => {
-        resolve({ id: Math.random(), message })
-    })
-}
-
 function* asyncSendMessage(action) {
     try {
         yield call(api.post, '/posts', {
@@ -23,6 +17,14 @@ function* asyncSendMessage(action) {
 
     }
 };
+
+function* asyncDestroyMessage(action) {
+    try {
+        yield call(api.delete, `/posts/${action.payload.id}`)
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 function* asyncRequestAPI(action) {
     try {
@@ -47,7 +49,9 @@ export default function* root() {
     yield all([
         takeLatest('ASYNC_SEND_MESSAGE', asyncSendMessage)
     ])
-
+    yield all([
+        takeLatest('ASYNC_DESTROY_MESSAGE', asyncDestroyMessage)
+    ])
     yield all([
         takeLatest('ASYNC_REQUEST_API', asyncRequestAPI)
     ])

@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 export default function messages(state = INITIAL_STATE, action) {
     switch (action.type) {
         case 'SEND_MESSAGE':
-            return { data: [...state.data, { id: Math.random(), message: action.payload.message }] }
+            return { data: [...state.data] }
         case 'REQUEST_API':
             return { data: [...state.data] }
         case 'SUCCESS_API': 
