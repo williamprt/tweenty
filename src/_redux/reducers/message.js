@@ -7,7 +7,11 @@ const INITIAL_STATE = {
 export default function messages(state = INITIAL_STATE, action) {
     switch (action.type) {
         case 'SEND_MESSAGE':
-            return { data: [{ id: action.payload.id, message: action.payload.message }, ...state.data] }
+            return { data: [{ _id: action.payload.id, message: action.payload.message }, ...state.data] }
+        case 'DESTROY_MESSAGE':
+            let index_of_element = state.data.map(item => item._id).indexOf(action.payload.id)
+            state.data.splice(index_of_element, 1)
+            return { data: [...state.data] }
         case 'REQUEST_API':
             return { data: [...state.data] }
         case 'SUCCESS_API':

@@ -21,7 +21,15 @@ function* asyncSendMessage(action) {
 
 function* asyncDestroyMessage(action) {
     try {
-        yield call(api.delete, `/posts/${action.payload.id}`)
+        const response = yield call(api.delete, `/posts/${action.payload.id}`)
+        let { _id: id } = response.data
+
+        yield put({
+            type: 'DESTROY_MESSAGE',
+            payload: {
+                id,
+            }
+        })
     } catch (error) {
         console.log(error)
     }
