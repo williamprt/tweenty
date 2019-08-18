@@ -1,6 +1,9 @@
-export function requestAPI() {
+export function requestAPI(page = 1) {
     return {
-        type: 'ASYNC_REQUEST_API'
+        type: 'ASYNC_REQUEST_API',
+        payload: {
+            page
+        }
     }
 }
 

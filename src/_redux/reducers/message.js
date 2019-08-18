@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     data: [],
     infos: [],
+    page: 1
 }
 
 export default function messages(state = INITIAL_STATE, action) {
@@ -10,7 +11,7 @@ export default function messages(state = INITIAL_STATE, action) {
         case 'REQUEST_API':
             return { data: [...state.data] }
         case 'SUCCESS_API': 
-            return { ...state, data: action.payload.data }
+            return { ...state, data: action.payload.data, infos: action.payload.infos, page: action.payload.page }
         case 'FAILURE_API': 
             return { data: [] } 
         default:

@@ -22,16 +22,17 @@ function* asyncSendMessage(action) {
     }
 };
 
-function* asyncRequestAPI() {
+function* asyncRequestAPI(action) {
     try {
-        const response = yield call(api.get, '/posts?page=1')
-        let { docs, prevPage, nextPage, page } = response.data;
+        const response = yield call(api.get, `/posts?page=${action.payload.page}`)
+        let { docs, prevPage, nextPage, totalPages,page } = response.data;
         console.log(response.data)
         yield put({
             type: 'SUCCESS_API',
             payload: {
                 data: docs,
-                
+                infos: { prevPage, nextPage, totalPages },
+                page,
             }
         })
     } catch (error) {
