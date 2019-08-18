@@ -5,6 +5,14 @@ import { connect } from 'react-redux';
 import * as Actions from '../../_redux/actions';
 
 class Feed extends Component {
+    componentDidMount() {
+        this.initialGetApi();
+    }
+
+    initialGetApi = () => {
+        this.props.requestAPI();
+    }
+
     render() {
         return (
             <div className="FeedMain">
@@ -18,6 +26,7 @@ class Feed extends Component {
                         )) }
                     </article>
                 </section>
+                { this.props.messages.loading && <p>Loading...</p> }
             </div>
         )
     }
