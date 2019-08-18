@@ -14,13 +14,7 @@ class Interface extends Component {
             <div className="InterfaceMain">
                 <section>
                     <article>
-                        { this.props.messages.data.map(docs => (
-                            <li key={docs.id}>{docs.message}</li>
-                        )) }
-                    </article>
-    
-                    <article>
-                        <input 
+                        <input
                             value={this.state.newMessage}
                             onChange={(e) => this.setState({ newMessage: e.target.value })}
                         />

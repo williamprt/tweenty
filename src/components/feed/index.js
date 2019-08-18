@@ -5,20 +5,17 @@ import { connect } from 'react-redux';
 import * as Actions from '../../_redux/actions';
 
 class Feed extends Component {
-    constructor(props) {
-        super(props)
-
-        console.log(props)
-    }
-
     render() {
         return (
             <div className="FeedMain">
                 <section>
                     <article>
-                        <span>Here will be the message</span>
-                        <span>Here will be the message author</span>
-                        <span>Herre will be the GMT time</span>
+                        { this.props.messages.data.map(docs => (
+                            <ul key={docs.id}>
+                                <span>{docs.message}</span> <br/>
+                                <span>@23:04</span>
+                            </ul>
+                        )) }
                     </article>
                 </section>
             </div>
