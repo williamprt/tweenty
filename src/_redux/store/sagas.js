@@ -3,14 +3,15 @@ import api from '../../services/axios';
 
 function* asyncSendMessage(action) {
     try {
-        yield call(api.post, '/posts', {
+        const response = yield call(api.post, '/posts', {
             message: action.payload.message
         })
-
+        let { _id: id, message } = response.data
         yield put({
             type: 'SEND_MESSAGE',
             payload: {
-                message: action.payload.message
+                id,
+                message
             }
         })
     } catch (error) {
