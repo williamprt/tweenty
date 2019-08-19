@@ -1,6 +1,28 @@
 import { takeLatest, all, put, call } from 'redux-saga/effects'
 import api from '../../services/axios';
 
+function getApi() {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            let date = new Date();
+            let time = date.getUTCDate()
+            resolve({_id: Math.random(), message: 'Hello World', createdAt: time})
+        }, 1000)
+    })
+}
+
+function postApi(action) {
+    const response = new Promise(resolve => {
+        setTimeout(() => {
+            let date = new Date();
+            let time = date.getUTCDate()
+            resolve({_id: Math.random(), message: action.payload.message, createdAt: time})
+        })
+    }, 1000)
+
+    return response;
+}
+
 function* asyncSendMessage(action) {
     try {
         const response = yield call(api.post, '/posts', {
