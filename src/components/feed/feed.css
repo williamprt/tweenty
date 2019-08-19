@@ -1,51 +1,44 @@
 div.FeedMain {
-    text-align: center;
+    margin: 0 auto;
+}
+
+div.FeedMain section#feedbox {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-content: center;
-}
-div.FeedMain section#feedbox {
-    padding-bottom: 15px;
-    text-align: center;
 }
 div.FeedMain section#feedbox article#allmessagesbox {
-    padding-top: 15px;
+    padding: 8px;
 }
 div.FeedMain section#feedbox article#allmessagesbox div {
-    width: 100%;
-    max-width: 350px;
-    height: 100%;
-    max-height: 100px;
-    padding: 15px;
+    width: 350px;
     border: 1px solid black;
     border-radius: 10px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
 }
 span#message {
     font-family: cursive;
+    text-align: left;
 }
 span#author {
     font-family: monospace;
-    position: relative;
-    top: 3px;
-    left: 150px;
+    text-align: right;
 }
 span#time {
+    padding-top: 5px;
     font-family: monospace;
-    position: relative;
-    top: 6px;
-    left: 80px;
+    text-align: right;
 }
 button#destroybutton {
+    height: 25px;
+    width: 25px;
     background-color: #CCC;
     border: 0px;
     border-radius: 50px;
-    height: 20px;
-    width: 20px;
-    position: relative;
-    bottom: 5px;
-    left: 170px;
     cursor: pointer;
+    position: relative;
+    left: 330px;
 }
