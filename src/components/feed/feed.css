@@ -1,0 +1,41 @@
+div.FeedMain section#feedbox {
+    padding: 30px;
+}
+div.FeedMain section#feedbox article#allmessagesbox {
+    padding-top: 15px;
+}
+div.FeedMain section#feedbox article#allmessagesbox div {
+    width: 350px;
+    height: 100px;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+span#message {
+    font-family: cursive;
+}
+span#author {
+    font-family: monospace;
+    position: relative;
+    top: 10px;
+    left: 150px;
+}
+span#time {
+    font-family: monospace;
+    position: relative;
+    top: 15px;
+    left: 80px;
+}
+button#destroybutton {
+    background-color: #CCC;
+    border: 0px;
+    border-radius: 50px;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    bottom: 5px;
+    left: 170px;
+    cursor: pointer;
+}

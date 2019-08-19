@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import * as Actions from '../../_redux/actions';
 
+import './feed.css';
+
 class Feed extends Component {
     componentDidMount() {
         this.initialGetApi();
@@ -16,18 +18,19 @@ class Feed extends Component {
     render() {
         return (
             <div className="FeedMain">
-                <section>
-                    <article>
-                        { this.props.messages.data.map(data => (
-                            <ul key={data._id}>
-                                <span>{data.message}</span> <br/>
-                                <span>@23:04</span>
-                                <button onClick={() => {
+                <section id="feedbox">
+                    { this.props.messages.data.map(data => (
+                        <article id="allmessagesbox" key={data._id}>
+                            <div>
+                                <button id="destroybutton" onClick={() => {
                                     this.props.destroyMessage(data._id);
                                 }}>X</button>
-                            </ul>
-                        )) }
-                    </article>
+                                <span id="message">{data.message}</span> <br/>
+                                <span id="author">@23:04</span>
+                                <span id="time">{data.createdAt}</span>
+                            </div>
+                        </article>
+                    )) }
                 </section>
             </div>
         )

@@ -6,12 +6,13 @@ function* asyncSendMessage(action) {
         const response = yield call(api.post, '/posts', {
             message: action.payload.message
         })
-        let { _id: id, message } = response.data
+        let { _id: id, message, createdAt } = response.data
         yield put({
             type: 'SEND_MESSAGE',
             payload: {
                 id,
-                message
+                message,
+                createdAt,
             }
         })
     } catch (error) {

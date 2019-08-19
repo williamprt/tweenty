@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import * as Actions from '../../_redux/actions';
 
+import './interface.css';
+
 class Interface extends Component {
     state = {
         newMessage: '',
@@ -32,22 +34,28 @@ class Interface extends Component {
         return (
             <div className="InterfaceMain">
                 <section>
-                    <article>
+                    <article id="pagechangerbox">
+                        <button id="prevpagebutton" onClick={() => {
+                            this.requestPrevPage();
+                        }}>PREV</button>
+                        <p> { this.state.page } </p> 
+                        <button id="nextpagebutton" onClick={() => {
+                            this.requestNextPage();
+                        }}>NEXT</button>
+                    </article>
+                    <article id="componentbox">
                         <input
+                            id="messageinput"
                             value={this.state.newMessage}
                             onChange={(e) => this.setState({ newMessage: e.target.value })}
                         />
-                        <button onClick={() => {
-                            let new_message = this.state.newMessage;
-                            this.props.sendMessage(new_message);
-                            this.setState({ newMessage: '' });
-                        }}>Send Message</button>
-                        <button onClick={() => {
-                            this.requestPrevPage();
-                        }}>Change to prev page</button>
-                        <button onClick={() => {
-                            this.requestNextPage();
-                        }}>Change to next page</button>
+                        <article id="buttonbox">
+                            <button id="sendbutton" onClick={() => {
+                                let new_message = this.state.newMessage;
+                                this.props.sendMessage(new_message);
+                                this.setState({ newMessage: '' });
+                            }}>Send</button>
+                        </article>
                     </article>
                 </section>
             </div>
