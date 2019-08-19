@@ -1,12 +1,15 @@
 div.FeedMain section#feedbox {
     padding: 30px;
+    text-align: center;
 }
 div.FeedMain section#feedbox article#allmessagesbox {
     padding-top: 15px;
 }
 div.FeedMain section#feedbox article#allmessagesbox div {
-    width: 350px;
-    height: 100px;
+    width: 100%;
+    max-width: 350px;
+    height: 100%;
+    max-height: 100px;
     padding: 15px;
     border: 1px solid black;
     border-radius: 10px;
@@ -19,13 +22,13 @@ span#message {
 span#author {
     font-family: monospace;
     position: relative;
-    top: 10px;
+    top: 3px;
     left: 150px;
 }
 span#time {
     font-family: monospace;
     position: relative;
-    top: 15px;
+    top: 6px;
     left: 80px;
 }
 button#destroybutton {
