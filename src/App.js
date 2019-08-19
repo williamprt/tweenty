@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello World its the first commit</h1>
-    </div>
-  );
+import Interface from './components/interface';
+import Feed from './components/feed';
+
+import store from './_redux/store';
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <div className="AppMain">
+          <Feed />
+          <Interface />
+        </div>
+      </Provider>
+    )
+  }
 }
 
 export default App;

@@ -1,0 +1,39 @@
+div.FeedMain section#feedbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+div.FeedMain section#feedbox article#allmessagesbox {
+    padding: 8px;
+}
+div.FeedMain section#feedbox article#allmessagesbox div {
+    width: 350px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+span#message {
+    font-family: cursive;
+    text-align: center;
+}
+span#author {
+    font-family: monospace;
+    text-align: right;
+}
+span#time {
+    padding-top: 5px;
+    font-family: monospace;
+    text-align: right;
+}
+button#destroybutton {
+    height: 25px;
+    width: 25px;
+    background-color: #CCC;
+    border: 0px;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    left: 330px;
+}
