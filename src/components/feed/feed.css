@@ -1,10 +1,13 @@
-div.FeedMain section#feedbox {
-    padding-bottom: 20px;
+div.FeedMain {
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-content: center;
     align-items: center;
+    align-content: center;
+}
+div.FeedMain section#feedbox {
+    padding-bottom: 15px;
+    text-align: center;
 }
 div.FeedMain section#feedbox article#allmessagesbox {
     padding-top: 15px;
