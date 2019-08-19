@@ -1,9 +1,4 @@
-div.FeedMain {
-    width: 100%;
-}
-
 div.FeedMain section#feedbox {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +16,7 @@ div.FeedMain section#feedbox article#allmessagesbox div {
 }
 span#message {
     font-family: cursive;
-    text-align: left;
+    text-align: center;
 }
 span#author {
     font-family: monospace;
