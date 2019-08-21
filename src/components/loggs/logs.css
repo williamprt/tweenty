@@ -1,0 +1,10 @@
+div#logsdiv {
+    padding: 10px;
+}
+
+article#errorp {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+}

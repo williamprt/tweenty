@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 
 import Interface from './components/interface';
 import Feed from './components/feed';
+import Logs from './components/loggs';
 
 import store from './_redux/store';
 
@@ -11,6 +12,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="AppMain">
+          <Logs />
           <Feed />
           <Interface />
         </div>

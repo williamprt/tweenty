@@ -2,7 +2,7 @@ import { takeLatest, all, put, call } from 'redux-saga/effects'
 import api from '../../services/axios';
 
 function getApi() {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             let date = new Date();
             let time = date.getUTCDate()
@@ -12,22 +12,20 @@ function getApi() {
 }
 
 function postApi(action) {
-    const response = new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
             let date = new Date();
             let time = date.getUTCDate()
             resolve({_id: Math.random(), message: action.payload.message, createdAt: time})
         })
     }, 1000)
-
-    return response;
 }
 
 function* asyncSendMessage(action) {
     try {
         const response = yield call(api.post, '/posts', {
             message: action.payload.message
-        })
+        });
         let { _id: id, message, createdAt } = response.data
         yield put({
             type: 'SEND_MESSAGE',
@@ -54,7 +52,7 @@ function* asyncDestroyMessage(action) {
             }
         })
     } catch (error) {
-        console.log(error)
+
     }
 }
 
@@ -62,6 +60,7 @@ function* asyncRequestAPI(action) {
     try {
         const response = yield call(api.get, `/posts?page=${action.payload.page}`)
         let { docs, prevPage, nextPage, totalPages, page } = response.data;
+
         yield put({
             type: 'SUCCESS_API',
             payload: {
@@ -71,8 +70,15 @@ function* asyncRequestAPI(action) {
             }
         })
     } catch (error) {
+        let error_name = error.name.toString();
+        let error_message = error.message.toString();
+
         yield put({
-            type: 'FAILURE_API'
+            type: 'FAILURE_API',
+            payload: {
+                name: error_name,
+                message: error_message
+            }
         })
     }
 }

@@ -7,6 +7,7 @@ import * as Actions from '../../_redux/actions';
 import './feed.css';
 
 class Feed extends Component {
+
     componentDidMount() {
         this.initialGetApi();
     }
