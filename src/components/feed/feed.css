@@ -1,6 +1,7 @@
 div.FeedMain section#feedbox {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 div.FeedMain section#feedbox article#allmessagesbox {
@@ -13,6 +14,7 @@ div.FeedMain section#feedbox article#allmessagesbox div {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 span#message {
     font-family: cursive;

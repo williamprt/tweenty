@@ -7,8 +7,8 @@ const Logs = ({ messages }) => {
     return (
         <div id="logsdiv">
             { messages.logs.map(logs => (
-                <article id="errorp" key={logs._id}>
-                    <p>{logs.name}: {logs.message}</p>
+                <article id="errorarticle" key={logs._id}>
+                    <p id="errorp">{logs.message}</p>
                 </article>
             )) }
         </div>

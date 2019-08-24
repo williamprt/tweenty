@@ -1,7 +1,7 @@
 import { takeLatest, all, put, call } from 'redux-saga/effects'
 import api from '../../services/axios';
 
-function getApi() {
+/*function getApi() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             let date = new Date();
@@ -9,9 +9,9 @@ function getApi() {
             resolve({_id: Math.random(), message: 'Hello World', createdAt: time})
         }, 1000)
     })
-}
+}*/
 
-function postApi(action) {
+/*function postApi(action) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             let date = new Date();
@@ -19,11 +19,11 @@ function postApi(action) {
             resolve({_id: Math.random(), message: action.payload.message, createdAt: time})
         })
     }, 1000)
-}
+}*/
 
 function* asyncSendMessage(action) {
     try {
-        const response = yield call(api.post, '/posts', {
+        const response = yield call(api.post, 'posts', {
             message: action.payload.message
         });
         let { _id: id, message, createdAt } = response.data
@@ -36,13 +36,13 @@ function* asyncSendMessage(action) {
             }
         })
     } catch (error) {
-
+        
     }
 };
 
 function* asyncDestroyMessage(action) {
     try {
-        const response = yield call(api.delete, `/posts/${action.payload.id}`)
+        const response = yield call(api.delete, `posts/${action.payload.id}`)
         let { _id: id } = response.data
 
         yield put({
@@ -52,34 +52,46 @@ function* asyncDestroyMessage(action) {
             }
         })
     } catch (error) {
-
+        
     }
 }
 
 function* asyncRequestAPI(action) {
     try {
-        const response = yield call(api.get, `/posts?page=${action.payload.page}`)
-        let { docs, prevPage, nextPage, totalPages, page } = response.data;
+        let prevPage = 0; let nextPage = 0; let totalPages = 0; let page = 0;
 
         yield put({
-            type: 'SUCCESS_API',
+            type: 'LOADING_API',
             payload: {
-                data: docs,
-                infos: { prevPage, nextPage, totalPages },
-                page,
+                loading: { _id: Math.random(), message: 'Loading...' },
+                infos: { prevPage, nextPage, totalPages, page }
             }
         })
-    } catch (error) {
-        let error_name = error.name.toString();
-        let error_message = error.message.toString();
+    } finally {
+        try {
+            const response = yield call(api.get, `posts?page=${action.payload.page}`)
+            let { docs, prevPage, nextPage, totalPages, page } = response.data;
 
-        yield put({
-            type: 'FAILURE_API',
-            payload: {
-                name: error_name,
-                message: error_message
-            }
-        })
+            yield put({
+                type: 'SUCCESS_API',
+                payload: {
+                    data: docs,
+                    infos: { prevPage, nextPage, totalPages, page },
+                }
+            })
+        } catch {
+            const error = new Error('Something`s going wrong! It`s not possible to establish an API connection.')
+            let error_message = error.message.toString();
+            let prevPage = 0; let nextPage = 0; let totalPages = 0; let page = 0;
+
+            yield put({
+                type: 'FAILURE_API',
+                payload: {
+                    message: error_message,
+                    infos: { prevPage, nextPage, totalPages, page }
+                }
+            })
+        }
     }
 }
 
