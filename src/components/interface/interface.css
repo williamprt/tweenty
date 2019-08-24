@@ -17,6 +17,8 @@ article#pagechangerbox {
 
 article#componentbox {
     padding: 25px;
+    padding-right: 50px;
+    padding-left: 50px;
     border: 1px solid #ccc;
     border-radius: 8px;
     display: flex;
@@ -26,7 +28,7 @@ article#componentbox {
 }
 
 input#messageinput {
-    padding-top: 5px;
+    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
