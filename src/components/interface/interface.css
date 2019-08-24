@@ -2,12 +2,12 @@ div.InterfaceMain section {
     padding-bottom: 15px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
 article#pagechangerbox {
-    width: 100%;
-    max-width: 400px;
+    width: 300px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -17,18 +17,16 @@ article#pagechangerbox {
 
 article#componentbox {
     padding: 25px;
-    width: 100%;
-    max-width: 250px;
     border: 1px solid #ccc;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
 input#messageinput {
-    width: 200px;
-    padding: 5px;
+    padding-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }

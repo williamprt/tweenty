@@ -11,23 +11,29 @@ class Interface extends Component {
         newMessage: '',
         page: 1
     }
-    
-    requestNextPage = () => {
-        let next_page = this.props.messages.infos.nextPage
-        let next_page_number = this.state.page + 1;
-        if (!next_page) return;
 
-        this.props.requestAPI(next_page_number);
-        this.setState({ page: next_page_number })
+    requestNextPage = () => {
+        let next_page = this.props.messages.infos.nextPage;
+        let next_page_number = this.state.page + 1;
+
+        if (next_page === 0) {
+            return
+        } else {
+            this.props.requestAPI(next_page_number);
+            this.setState({ page: next_page_number })        
+        }  
     }
 
     requestPrevPage = () => {
-        let prev_page = this.props.messages.infos.prevPage
+        let prev_page = this.props.messages.infos.prevPage;
         let prev_page_number = this.state.page - 1;
-        if (!prev_page) return;
-
-        this.props.requestAPI(prev_page_number);
-        this.setState({ page: prev_page_number })
+    
+        if (prev_page === 0) {
+            return
+        } else {
+            this.props.requestAPI(prev_page_number);
+            this.setState({ page: prev_page_number })
+        }
     }
 
     render() {
@@ -38,7 +44,7 @@ class Interface extends Component {
                         <button id="prevpagebutton" onClick={() => {
                             this.requestPrevPage();
                         }}>PREV</button>
-                        <p> { this.state.page } </p> 
+                        <p>{this.props.messages.infos.page} of {this.props.messages.infos.totalPages}</p> 
                         <button id="nextpagebutton" onClick={() => {
                             this.requestNextPage();
                         }}>NEXT</button>

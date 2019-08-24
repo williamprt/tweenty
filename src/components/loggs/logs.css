@@ -1,0 +1,17 @@
+div#logsdiv {
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+article#errorarticle {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+p#errorp {
+   font-family: 'Courier New', Courier, monospace;
+}
