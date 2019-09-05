@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
 import Interface from './components/interface';
-import Loading from './components/loading';
+import Alerts from './components/alerts';
 import Feed from './components/feed';
-import Logs from './components/loggs';
 
 import store from './_redux/store';
+
+import './global.css'
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="AppMain">
-          <Loading />
-          <Logs />
+        <div id="AppMain">
+          <Alerts />
           <Feed />
           <Interface />
         </div>
