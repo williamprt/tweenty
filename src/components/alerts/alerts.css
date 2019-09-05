@@ -1,0 +1,25 @@
+div#AlertsMain {
+    display: flex;
+    flex-direction: column;
+}
+
+section#alertname {
+    padding-top: 20px;
+}
+h1#aplicationname {
+    font-family: cursive;
+}
+
+section#alertloading {
+    padding-top: 25px;
+}
+p#alertloadingmessage {
+    font-family: monospace;
+}
+
+section#alertlogs {
+    padding-top: 15px;
+}
+p#alertinfosmessage {
+    font-family: monospace;
+}

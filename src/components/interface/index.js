@@ -39,7 +39,7 @@ class Interface extends Component {
     render() {
         return (
             <div className="InterfaceMain">
-                <section>
+                <section id="sectiona">
                     <article id="pagechangerbox">
                         <button id="prevpagebutton" onClick={() => {
                             this.requestPrevPage();
@@ -49,20 +49,22 @@ class Interface extends Component {
                             this.requestNextPage();
                         }}>NEXT</button>
                     </article>
-                    <article id="componentbox">
-                        <input
-                            id="messageinput"
-                            value={this.state.newMessage}
-                            onChange={(e) => this.setState({ newMessage: e.target.value })}
-                        />
-                        <article id="buttonbox">
-                            <button id="sendbutton" onClick={() => {
-                                let new_message = this.state.newMessage;
-                                this.props.sendMessage(new_message);
-                                this.setState({ newMessage: '' });
-                            }}>Send</button>
+                    <section id="sectionb">
+                        <article id="componentbox">
+                            <input
+                                id="messageinput"
+                                value={this.state.newMessage}
+                                onChange={(e) => this.setState({ newMessage: e.target.value })}
+                            />
+                            <article id="buttonbox">
+                                <button id="sendbutton" onClick={() => {
+                                    let new_message = this.state.newMessage;
+                                    this.props.sendMessage(new_message);
+                                    this.setState({ newMessage: '' });
+                                }}>Send</button>
+                            </article>
                         </article>
-                    </article>
+                    </section>
                 </section>
             </div>
         )

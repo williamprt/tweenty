@@ -21,7 +21,7 @@ class Feed extends Component {
                 <section id="feedbox">
                     { this.props.messages.data.map(data => (
                         <article id="allmessagesbox" key={data._id}>
-                            <div>
+                            <div id="borderdiv">
                                 <button id="destroybutton" onClick={() => {
                                     this.props.destroyMessage(data._id);
                                 }}>X</button>
