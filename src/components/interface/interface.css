@@ -28,7 +28,8 @@ section#sectionb {
     padding-bottom: 20px;
 }
 article#componentbox {
-    width: 300px;
+    max-width: 300px;
+    width: 100%;
     padding: 15px;
     background-color: #CCC;
     border: 1px solid blanchedalmond;
