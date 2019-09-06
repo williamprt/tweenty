@@ -11,7 +11,7 @@ article#allmessagesbox {
    padding: 8px;
 }
 div#borderdiv {
-    width: 400px;
+    width: 320px;
     background-color: #CCC;
     border: 0px;
     border-radius: 6px;
@@ -28,7 +28,7 @@ button#destroybutton {
     border-radius: 50px;
     position: relative;
     bottom: 4px;
-    left: 180px;
+    left: 150px;
     cursor: pointer;
 }
 span#message {
@@ -38,11 +38,11 @@ span#message {
 span#author {
     font-family: monospace;
     position: relative;
-    left: 160px;
+    left: 130px;
 }
 span#time {
     font-family: monospace;
     position: relative;
     top: 3px;
-    left: 89px;
+    left: 59px;
 }
