@@ -2,8 +2,7 @@ section#sectiona {
     padding-top: 10px;
 }
 article#pagechangerbox {
-    width: 100%;
-    max-width: 570px;
+    width: 500px;
     display: flex;
     justify-content: space-between;
 }
@@ -29,8 +28,7 @@ section#sectionb {
     padding-bottom: 20px;
 }
 article#componentbox {
-    width: 100%;
-    max-width: 300px;
+    width: 300px;
     padding: 15px;
     background-color: #CCC;
     border: 1px solid blanchedalmond;
