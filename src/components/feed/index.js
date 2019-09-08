@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
 
 import api from '../../services/axios';
 
@@ -9,8 +10,17 @@ const Feed = () => {
     const [content, setContent] = useState([]);
     const [newMessage, setMessage] = useState(undefined);
     useEffect(() => {
+        useSocketIO();
         getDocsAndSetContent();
     });
+
+    function useSocketIO() {
+        const socket = io();
+
+        socket.emit('post', (newMessage) => {
+            setContent(newMessage, ...content);
+        });
+    }
 
     async function getDocsAndSetContent() {
         const response = await api.get('posts')
