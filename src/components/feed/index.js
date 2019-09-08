@@ -1,46 +1,64 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
 
-import * as Actions from '../../_redux/actions';
+import api from '../../services/axios';
 
+import './interface.css';
 import './feed.css';
 
-class Feed extends Component {
+const Feed = () => {
+    const [content, setContent] = useState([]);
+    const [newMessage, setMessage] = useState(undefined);
+    useEffect(() => {
+        getDocsAndSetContent();
+    });
 
-    componentDidMount() {
-        this.initialGetApi();
+    async function getDocsAndSetContent() {
+        const response = await api.get('posts')
+        let { docs } = response.data;
+        setContent(docs)
     }
 
-    initialGetApi = () => {
-        this.props.requestAPI();
-    }
+    return (
+        <div className="FeedMain">
+            <section id="titlebox">
+                <header id="headerborder">
+                    <h1 id="title">Tweenty</h1>
+                </header>
+            </section>
 
-    render() {
-        return (
-            <div className="FeedMain">
-                <section id="feedbox">
-                    { this.props.messages.data.map(data => (
-                        <article id="allmessagesbox" key={data._id}>
-                            <div>
-                                <button id="destroybutton" onClick={() => {
-                                    this.props.destroyMessage(data._id);
-                                }}>X</button>
-                                <span id="message">{data.message}</span> <br/>
-                                <span id="author">@23:04</span>
-                                <span id="time">{data.createdAt}</span>
-                            </div>
-                        </article>
-                    )) }
+            <section id="feedbox">
+                { content.map(data => (
+                    <article id="allmessagesbox" key={data._id}>
+                        <div id="borderdiv">
+                            <button id="destroybutton" onClick={() => {
+                                // create a function to remove message
+                            }}>X</button>
+                            <span id="message">{data.message}</span> <br/>
+                            <span id="author">@23:04</span>
+                            <span id="time">{data.createdAt}</span>
+                        </div>
+                    </article>
+                )) }
+            </section>
+
+            <section id="interfacebox">
+                <section id="interfaceborderbox">
+                    <form id="inputform">
+                        <input
+                            id="newmessageinput"
+                            placeholder="Qual é a mensagem de hoje?"
+                            value={newMessage}
+                            onChange={(e) => setMessage(e.target.value)}
+                        />
+                    </form>
+                    <article id="buttonbox">
+                        <button id="sendbutton" onClick={() => {
+                            // Send new Message
+                        }}>Send</button>
+                    </article>
                 </section>
-            </div>
-        )
-    }
-}
-const mapStateToProps = state => ({
-  messages: state.messages
-});
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(Actions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Feed);
+            </section>
+        </div>
+    )
+};
+export default Feed;
