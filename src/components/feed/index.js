@@ -10,22 +10,31 @@ const Feed = () => {
     const [content, setContent] = useState([]);
     const [newMessage, setMessage] = useState(undefined);
     useEffect(() => {
-        useSocketIO();
         getDocsAndSetContent();
     });
-
-    function useSocketIO() {
-        const socket = io();
-
-        socket.emit('post', (newMessage) => {
-            setContent(newMessage, ...content);
-        });
-    }
 
     async function getDocsAndSetContent() {
         const response = await api.get('posts')
         let { docs } = response.data;
         setContent(docs)
+    };
+
+    async function sendNewMessage() {
+        try {
+            await api.post('posts', {
+                message: newMessage
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    async function destroyMessage(id) {
+        try {
+            await api.delete(`posts/${id}`);
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     return (
@@ -41,7 +50,7 @@ const Feed = () => {
                     <article id="allmessagesbox" key={data._id}>
                         <div id="borderdiv">
                             <button id="destroybutton" onClick={() => {
-                                // create a function to remove message
+                                destroyMessage(data._id)
                             }}>X</button>
                             <span id="message">{data.message}</span> <br/>
                             <span id="author">@23:04</span>
@@ -63,7 +72,8 @@ const Feed = () => {
                     </form>
                     <article id="buttonbox">
                         <button id="sendbutton" onClick={() => {
-                            // Send new Message
+                            sendNewMessage();
+                            setMessage('');
                         }}>Send</button>
                     </article>
                 </section>
