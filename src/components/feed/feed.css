@@ -1,14 +1,26 @@
 section#feedbox {
-    padding-top: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+section#titlebox {
+    padding: 10px;
+}
+header#headerborder {
+    padding: 15px;
+}
+h1#title {
+    text-align: center;
+    font-family: cursive;
+    font-size: 20pt;
+}
+
 article#allmessagesbox {
    padding: 8px;
 }
 div#borderdiv {
     width: 320px;
+    height: 120px;
     background-color: #CCC;
     border: 0px;
     border-radius: 6px;
